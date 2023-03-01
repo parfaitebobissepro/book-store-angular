@@ -23,6 +23,6 @@ export class LoginComponent implements OnInit {
   }
 
   goToBookDetails():void{
-    this.router.navigate(['/public/book-details',100,'author',300]);
+    this.router.navigate(['/books/book-details',100,'author',300]);
   }
 }

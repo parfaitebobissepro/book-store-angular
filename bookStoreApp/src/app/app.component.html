@@ -1,26 +1,15 @@
-<div class="container">
-    <header class="d-flex justify-content-center py-3">
-        <ul class="nav nav-pills">
-            <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Home</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Features</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">Pricing</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">FAQs</a></li>
-            <li class="nav-item"><a href="#" class="nav-link">About</a></li>
-        </ul>
-    </header>
-</div>
+<app-toolbar>
 
+</app-toolbar>
 <div>
     <a routerLink="/about-us">about-us</a>
     <a routerLink="/how-it-works">how-it-works</a>
     <a routerLink="/auth/login">/auth/login</a>
-    <a routerLink="/public/all-books">All books</a>
-    <a [routerLink]="['/public/book-details','1','author','3']">Details form app</a>
+    <a routerLink="/books/all-books">All books</a>
+    <a [routerLink]="['/books/book-details','1','author','3']">Details form app</a>
 </div>
 
 <router-outlet></router-outlet>
 
 
-<div>
-    <h1>Footer</h1>
-</div>
+<app-footer></app-footer>

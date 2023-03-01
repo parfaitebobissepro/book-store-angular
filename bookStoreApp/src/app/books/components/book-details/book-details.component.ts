@@ -9,7 +9,6 @@ import { ActivatedRoute } from '@angular/router';
 export class BookDetailsComponent implements OnInit {
 
   public id: number = 0;
-  public authorId: number = 0;
 
   constructor(private route: ActivatedRoute) { }
 
@@ -17,7 +16,6 @@ export class BookDetailsComponent implements OnInit {
     console.log(this.route);
     this.route.params.subscribe(param => {
       this.id = param['id'];
-      this.authorId = param['authorId'];
     })
 
   }
