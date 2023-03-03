@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { BookModel } from '../../shared/models/books.model';
 
 @Injectable(
@@ -31,14 +33,17 @@ export class BookService {
   ];
 
 
-  constructor() { }
+  constructor(private _httpClient: HttpClient) {
+
+   }
 
   public addBook(bookModel: BookModel): void {
     this.allBooks.push(bookModel);
   }
 
-  public getBooks(): any[] {
-    return this.allBooks;
+  public getBooks(): Observable<BookModel[]> {
+    // return this.allBooks;
+    return this._httpClient.get<BookModel[]>('https://localhost:7287/api/books');
   }
   public recentBooks(): any[] {
     return [
