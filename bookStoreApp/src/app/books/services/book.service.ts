@@ -6,61 +6,39 @@ import { BookModel } from '../../shared/models/books.model';
 )
 export class BookService {
 
+  private allBooks: any[] = [
+    {
+      "id": 1,
+      "title": "HTML Web API",
+      "totalPages": 546,
+      "author": "Ebobisse parfait",
+      "price": {
+        "currency": "USD",
+        "value": 400
+      },
+    },
+    {
+      "id": 2,
+      "title": "CSS Web API",
+      "totalPages": 7826,
+      "author": "Grace Epoune",
+      "price": {
+        "currency": "USD",
+        "value": 400
+      },
+
+    }
+  ];
+
+
   constructor() { }
 
+  public addBook(bookModel: BookModel): void {
+    this.allBooks.push(bookModel);
+  }
+
   public getBooks(): any[] {
-    return [
-      {
-        "id": 1,
-        "title": "HTML Web API",
-        "totalPages": 546,
-        "author": "Ebobisse parfait",
-        "price": {
-          "currency": "USD",
-          "value": 400
-        },
-      },
-      {
-        "id": 2,
-        "title": "CSS Web API",
-        "totalPages": 7826,
-        "author": "Grace Epoune",
-        "price": {
-          "currency": "USD",
-          "value": 400
-        },
-      },
-      {
-        "id": 3,
-        "title": "ReactJS Web API",
-        "totalPages": 546,
-        "author": "MBIAH EPOUNE Dorette",
-        "price": {
-          "currency": "USD",
-          "value": 400
-        },
-      },
-      {
-        "id": 4,
-        "title": "Angular Web API",
-        "totalPages": 546,
-        "author": "Henri EPOUNE",
-        "price": {
-          "currency": "USD",
-          "value": 400
-        },
-      },
-      {
-        "id": 5,
-        "title": "Design pattern SOLID",
-        "totalPages": 546,
-        "author": "Nagesh Khatri",
-        "price": {
-          "currency": "USD",
-          "value": 400
-        },
-      }
-    ]
+    return this.allBooks;
   }
   public recentBooks(): any[] {
     return [
@@ -84,7 +62,7 @@ export class BookService {
           "value": 400
         },
       },
-    
+
     ]
   }
 }

@@ -1,0 +1,73 @@
+<h2>Add new Book using Reactive</h2>
+<button (click)="updateFormValues()">Update values</button>
+<form class="add-book-form" (ngSubmit)="saveBook()" [formGroup]="addBookForm">
+    <mat-radio-group aria-label="Select an option" class="toggle" formControlName="formatType">
+        <mat-radio-button value="pdf">PDF</mat-radio-button>
+        <mat-radio-button value="doc">Doc</mat-radio-button>
+    </mat-radio-group>
+    <mat-form-field appearance="fill">
+        <mat-label>Doc Format</mat-label>
+        <input matInput name="docFormat" placeholder="docFormat" formControlName="docFormat">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Pdf Format</mat-label>
+        <input matInput name="pdfFormat" placeholder="pdfFormat" formControlName="pdfFormat">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Title</mat-label>
+        <input matInput name="title" placeholder="title" formControlName="title">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint class="mat-hint ">
+            <span>{{titleErrorMessage}}</span>
+        </mat-hint>
+    </mat-form-field>
+    <div formArrayName="authors">
+        <ng-container *ngFor="let auth of authors.controls; let i=index">
+            <mat-form-field appearance="fill" [formGroupName]="i">
+                <mat-label>Author</mat-label>
+                <input matInput placeholder="Author fullName" formControlName="fullName">
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+                <mat-hint class="mat-hint ">Please enter the author</mat-hint>
+            </mat-form-field>
+            <button mat-button (click)="removeAuthor(i)">Remove</button>
+        </ng-container>
+        <button mat-button (click)="addMoreAuthor()">Add more</button>
+    </div>
+    <mat-form-field appearance="fill">
+        <mat-label>No of pages</mat-label>
+        <input matInput type="number" name="pages" placeholder="pages" formControlName="totalPages">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+        <mat-hint class="mat-hint ">Valid length between 10 and 100</mat-hint>
+    </mat-form-field>
+    <div class="price-container" formGroupName="price">
+        <mat-form-field appearance="fill">
+            <mat-label>Currency</mat-label>
+            <mat-select name="currency" placeholder="currency" formControlName="currency">
+                <mat-option *ngFor="let currency of currencies" [value]="currency.value">{{currency.viewValue}}</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>123</mat-icon>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Price</mat-label>
+            <mat-select name="price" placeholder="price" formControlName="value">
+                <mat-option *ngFor="let price of prices" [value]="price.value">{{price.viewValue}}</mat-option>
+            </mat-select>
+            <mat-icon matSuffix>123</mat-icon>
+        </mat-form-field>
+    </div>
+    <mat-form-field appearance="fill">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" name="date" formControlName="publishedOn">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-slide-toggle name="isPublished" class="toogle" formControlName="isPublished">Slide me!</mat-slide-toggle>
+
+    <button type="submit" mat-raised-button color="primary" [disabled]="addBookForm.invalid">Save</button>
+</form>
+
+{{addBookForm.value | json}}

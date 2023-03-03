@@ -9,6 +9,8 @@ import { TestService } from './shared/services/test.service';
 import { counterFactory } from './shared/services/counter.factory';
 import { HomeComponent } from './public-components/home/home.component';
 import { AboutUsComponent } from './public-components/about-us/about-us.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +21,7 @@ import { AboutUsComponent } from './public-components/about-us/about-us.componen
     BrowserModule,
     AppRoutingModule,
     SharedModule,
+    BrowserAnimationsModule,
   ],
 
   providers: [

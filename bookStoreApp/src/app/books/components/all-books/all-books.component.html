@@ -1,12 +1,5 @@
 <h2>Books</h2>
 
-{{pageTitle}}
-
-<a [routerLink]="'recent'">Recent books</a>
-
-<button (click)="increase()">Counter ++</button>
-<button (click)="decrease()">Counter --</button>
-<p>Counter ={{_counterService.counter}}</p>
-
-
+<button mat-raised-button color="primary" routerLink="new">Add new Book</button>
+<button mat-raised-button color="primary" routerLink="new-reactive">Add new Book using Reactive Form</button>
 <app-book-card [allBooks]="books"></app-book-card>
